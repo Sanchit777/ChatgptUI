@@ -1,7 +1,13 @@
 import ChatGPTUI from "./ChatGPTUI";
 
+
 function App() {
-  return <ChatGPTUI />;
+  return (
+    <div className="flex">
+      
+      <ChatGPTUI />
+    </div>
+  );
 }
 
 export default App;
