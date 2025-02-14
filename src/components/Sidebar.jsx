@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { FaClipboardList, FaSearch } from "react-icons/fa";
+import { FaClipboardList, FaSearch, FaTimes } from "react-icons/fa";
 
-const Sidebar = ({ chatHistory }) => {
+const Sidebar = ({ chatHistory, closeSidebar }) => {
   const [recentChats, setRecentChats] = useState([]);
-
 
   useEffect(() => {
     setRecentChats(chatHistory.slice(-10));
@@ -11,18 +10,20 @@ const Sidebar = ({ chatHistory }) => {
 
   return (
     <div className="h-screen w-64 bg-black text-white p-4 flex flex-col">
+      {/* Close button (Only for small screens) */}
+      <button className="md:hidden text-white text-xl self-end mb-2" onClick={closeSidebar}>
+        <FaTimes />
+      </button>
 
       <div className="flex items-center justify-between">
         <FaClipboardList className="text-xl" />
         <FaSearch className="text-xl cursor-pointer" />
       </div>
 
-
       <div className="mt-4">
         <div className="text-yellow-400 font-semibold">ChatGPT</div>
         <div className="text-gray-400">Explore GPTs</div>
       </div>
-
 
       <div className="mt-6 text-gray-300 flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-700">
         <div className="text-xs font-semibold mb-2">Previous Chats</div>
